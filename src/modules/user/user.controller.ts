@@ -18,22 +18,23 @@ export class UserController {
     };
 
     getById = async (req: Request, res: Response) => {
-        if (!req.user) return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Unauthorized" });
+        if (!req.user)
+            return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Unauthorized" });
 
         const id = Number(req.params.id);
 
-        if (req.user.role !== Role.ADMIN && req.user.id !== id) {
+        if (req.user.role !== Role.ADMIN && req.user.id !== id)
             return res.status(StatusCodes.FORBIDDEN).json({ message: "Forbidden" });
-        }
+
 
         const user = await this.service.getById(id);
         res.json(user);
     };
 
     getAll = async (req: Request, res: Response) => {
-        if (!req.user || req.user.role !== Role.ADMIN) {
+        if (!req.user || req.user.role !== Role.ADMIN)
             return res.status(StatusCodes.FORBIDDEN).json({ message: "Forbidden" });
-        }
+
 
         const users = await this.service.getAll();
         res.json(users);
@@ -44,9 +45,9 @@ export class UserController {
 
         const id = Number(req.params.id);
 
-        if (req.user.role !== Role.ADMIN && req.user.id !== id) {
+        if (req.user.role !== Role.ADMIN && req.user.id !== id)
             return res.status(StatusCodes.FORBIDDEN).json({ message: "Forbidden" });
-        }
+
 
         const result = await this.service.block(id);
         res.json(result);
