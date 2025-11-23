@@ -1,7 +1,7 @@
-import prisma from "../database/prisma";
+import {prisma} from "../../database/prisma";
 
 export class UserRepository {
-    create(data) {
+    create(data: any) {
         return prisma.user.create({data})
     }
 
@@ -14,7 +14,7 @@ export class UserRepository {
     }
 
     findAll() {
-        return prisma.user.findAll()
+        return prisma.user.findMany()
     }
 
     blockUser(id: number) {
