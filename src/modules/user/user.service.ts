@@ -15,13 +15,18 @@ export class UserService {
 
         const hashed = await hashPassword(data.password)
 
+        // чтобы можно было передавать удобно дату
+        const birthDate = data.birthDate ? new Date(data.birthDate) : null
+
         return this.repo.create({
             ...data,
+            birthDate,
             password: hashed,
             role: Role.USER,
             isActive: true
         })
     }
+
 
     async login(email: string, password: string) {
         const user = await this.repo.findByEmail(email)
