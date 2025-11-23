@@ -1,0 +1,36 @@
+@host = http://localhost:3000
+@jwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYzOTE2NDAyLCJleHAiOjE3NjM5MjAwMDJ9.qLrJUoIE3MXxGMXKTAACtYTOctgT1rgl_HjrsmYwITc
+
+### Регистрация пользователя
+POST http://localhost:3000/api/users/register
+Content-Type: application/json
+
+{
+  "fullName": "Мурзов Альберт Валерьевич",
+  "email": "another@example.com",
+  "password": "123456",
+  "birthDate": "2000-07-12"
+}
+
+### Вход пользователя
+POST {{host}}/api/users/login
+Content-Type: application/json
+
+{
+  "email": "ivan@example.com",
+  "password": "123456"
+}
+
+### Блокировка пользователя по ID
+PATCH http://localhost:3000/api/users/block/1
+Authorization: Bearer {{jwt}}
+
+
+### Получение всех пользователей (admin)
+GET {{host}}/api/users/
+Authorization: Bearer {{jwt}}
+
+
+
+
+
