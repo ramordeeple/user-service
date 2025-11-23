@@ -52,4 +52,17 @@ export class UserController {
         const result = await this.service.block(id);
         res.json(result);
     };
+
+    unblock = async (req: Request, res: Response) => {
+        if (!req.user) return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Unauthorized" });
+
+        const id = Number(req.params.id);
+
+        if (req.user.role !== Role.ADMIN && req.user.id !== id)
+            return res.status(StatusCodes.FORBIDDEN).json({ message: "Forbidden" });
+
+        const result = await this.service.unblock(id);
+        res.json(result);
+    };
+
 }

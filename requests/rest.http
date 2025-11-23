@@ -1,5 +1,5 @@
 @host = http://localhost:3000
-@jwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYzOTE2NDAyLCJleHAiOjE3NjM5MjAwMDJ9.qLrJUoIE3MXxGMXKTAACtYTOctgT1rgl_HjrsmYwITc
+@jwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYzOTI1MTY4LCJleHAiOjE3NjM5Mjg3Njh9.zctAK3OSazsO_0MBwHoI4BgXfcXjnHjiQCs8ERZzvXI
 
 ### Регистрация пользователя
 POST http://localhost:3000/api/users/register
@@ -21,8 +21,12 @@ Content-Type: application/json
   "password": "123456"
 }
 
-### Блокировка пользователя по ID
-PATCH http://localhost:3000/api/users/block/1
+### Заблокировать пользователя по ID
+PATCH http://localhost:3000/api/users/block/2
+Authorization: Bearer {{jwt}}
+
+### Разблокировать пользователя по ID
+PATCH http://localhost:3000/api/users/unblock/2
 Authorization: Bearer {{jwt}}
 
 

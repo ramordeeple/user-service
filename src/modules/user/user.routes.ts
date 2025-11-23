@@ -12,5 +12,7 @@ router.get('/:id', authMiddleware, controller.getById);
 router.get('/', authMiddleware, controller.getAll);
 
 router.patch('/block/:id', authMiddleware, controller.block)
+router.patch('/unblock/:id', authMiddleware, controller.unblock);
+
 
 export default router;

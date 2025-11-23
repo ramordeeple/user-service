@@ -1,4 +1,5 @@
 import {prisma} from "../../database/prisma";
+import {User} from "@prisma/client";
 
 export class UserRepository {
     create(data: any) {
@@ -22,4 +23,12 @@ export class UserRepository {
             where: { id },
             data: {isActive: false}})
     }
+
+    update(id: number, data: Partial<User>) {
+        return prisma.user.update({
+            where: { id },
+            data,
+        });
+    }
+
 }

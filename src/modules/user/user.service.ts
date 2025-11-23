@@ -67,4 +67,16 @@ export class UserService {
 
         return this.repo.blockUser(id)
     }
+
+    async unblock(id: number) {
+        const user = await this.repo.findById(id);
+        if (!user)
+            throw new ApiError(StatusCodes.NOT_FOUND, `User not found`);
+
+        if (user.isActive)
+            throw new ApiError(StatusCodes.BAD_REQUEST, `User already active`);
+
+        return this.repo.update(id, { isActive: true });
+    }
+
 }
