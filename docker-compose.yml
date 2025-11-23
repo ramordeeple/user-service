@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:latest
+    command: ["postgres", "-c", "port=5433"]
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5433:5433"
+    volumes:
+      - users_pg:/var/lib/postgresql/data
+volumes:
+  users_pg:
