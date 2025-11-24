@@ -1,9 +1,9 @@
-import {UserRepository} from "./user.repository";
-import {ApiError} from "../../errors/ApiError";
-import {comparePassword, hashPassword} from "../../utils/crypto";
-import {StatusCodes} from "http-status-codes";
-import {Role} from "../../types/role.enum";
-import {signJWT} from "../../utils/jwt";
+import {UserRepository} from "./user.repository"
+import {ApiError} from "../../errors/ApiError"
+import {comparePassword, hashPassword} from "../../utils/crypto"
+import {StatusCodes} from "http-status-codes"
+import {Role} from "../../types/role.enum"
+import {signJWT} from "../../utils/jwt"
 
 export class UserService {
     private repo = new UserRepository()
@@ -67,14 +67,14 @@ export class UserService {
     }
 
     async unblock(id: number) {
-        const user = await this.repo.findById(id);
+        const user = await this.repo.findById(id)
         if (!user)
-            throw new ApiError(StatusCodes.NOT_FOUND, `User not found`);
+            throw new ApiError(StatusCodes.NOT_FOUND, `User not found`)
 
         if (user.isActive)
-            throw new ApiError(StatusCodes.BAD_REQUEST, `User already active`);
+            throw new ApiError(StatusCodes.BAD_REQUEST, `User already active`)
 
-        return this.repo.update(id, { isActive: true });
+        return this.repo.update(id, { isActive: true })
     }
 
 }

@@ -1,12 +1,12 @@
-import express from "express";
-import userRoutes from "./modules/user/user.routes";
+import express from "express"
+import userRoutes from "./modules/user/user.routes"
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use("/api/users", userRoutes);
+app.use(express.json())
+app.use("/api/users", userRoutes)
 
-const PORT = 3000;
+const PORT = 3000
 app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-});
+    console.log(`Server started on port ${PORT}`)
+})

@@ -1,5 +1,5 @@
-import {prisma} from "../../database/prisma";
-import {User} from "@prisma/client";
+import {prisma} from "../../database/prisma"
+import {User} from "@prisma/client"
 
 export class UserRepository {
     create(data: any) {
@@ -28,7 +28,7 @@ export class UserRepository {
         return prisma.user.update({
             where: { id },
             data,
-        });
+        })
     }
 
 }
