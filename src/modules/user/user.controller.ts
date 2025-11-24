@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserService } from "./user.service";
-import { checkAdminOrSelf, forbidden } from "../../utils/access";
+import {checkAdminOrSelf, forbidden, unauthorized} from "../../utils/access";
 import {StatusCodes} from "http-status-codes";
 import {Role} from "../../types/role.enum";
 
@@ -19,11 +19,11 @@ export class UserController {
     };
 
     block = async (req: Request, res: Response) => {
-        if (!req.user) return res.status(StatusCodes.UNAUTHORIZED).json({ message: "Unauthorized" });
+        if (!req.user) return unauthorized(res)
 
         const id = Number(req.params.id);
 
-        if (req.user?.role !== Role.ADMIN && req.user.id !== id) return forbidden(res);
+        if (!checkAdminOrSelf(req, id)) return forbidden(res);
 
         const result = await this.service.block(id);
         res.json(result);
