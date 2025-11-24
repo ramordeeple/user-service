@@ -1,12 +1,12 @@
 @host = http://localhost:3000
-@jwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzYzOTI1MTY4LCJleHAiOjE3NjM5Mjg3Njh9.zctAK3OSazsO_0MBwHoI4BgXfcXjnHjiQCs8ERZzvXI
+@jwt = <JWT_TOKEN>
 
 ### Регистрация пользователя
 POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-  "fullName": "Мурзов Альберт Валерьевич",
+  "fullName": "Иванов Иван Иванович",
   "email": "another@example.com",
   "password": "123456",
   "birthDate": "2000-07-12"
@@ -28,7 +28,6 @@ Authorization: Bearer {{jwt}}
 ### Разблокировать пользователя по ID
 PATCH http://localhost:3000/api/users/unblock/2
 Authorization: Bearer {{jwt}}
-
 
 ### Получение всех пользователей (admin)
 GET {{host}}/api/users/
