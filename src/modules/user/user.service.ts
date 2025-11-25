@@ -4,22 +4,21 @@ import {comparePassword, hashPassword} from "../../utils/crypto"
 import {StatusCodes} from "http-status-codes"
 import {Role} from "../../types/role.enum"
 import {signJWT} from "../../utils/jwt"
+import {User} from "@prisma/client";
 
 export class UserService {
     private repo = new UserRepository()
 
-    async register(data: any) {
+    async register(data: User) {
         const exists = await this.repo.findByEmail(data.email)
         if (exists)
             throw new ApiError(StatusCodes.CONFLICT, `Email already exists`)
 
         const hashed = await hashPassword(data.password)
 
-        const birthDate = data.birthDate ? new Date(data.birthDate) : null
-
         return this.repo.create({
             ...data,
-            birthDate,
+            birthDate: new Date(data.birthDate),
             password: hashed,
             role: Role.USER,
             isActive: true

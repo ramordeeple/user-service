@@ -2,7 +2,7 @@ import {prisma} from "../../database/prisma"
 import {User} from "@prisma/client"
 
 export class UserRepository {
-    create(data: any) {
+    create(data: User) {
         return prisma.user.create({data})
     }
 
