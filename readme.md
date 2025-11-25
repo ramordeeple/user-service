@@ -30,8 +30,7 @@ src/
  │      ├─ user.repository.ts    — работа с БД через Prisma
  │      └─ user.routes.ts        — маршруты    
  ├─ middleware/
- │   ├─ auth.middleware.ts       — проверка JWT
- │   └─ role.middleware.ts       — проверка ролей
+ │   └─ auth.middleware.ts       — проверка JWT
  ├─ database/
  │   └─ prisma.ts                — инициализация PrismaClient
  ├─ types/
