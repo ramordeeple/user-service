@@ -6,10 +6,10 @@ POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-  "fullName": "Иванов Иван Иванович",
-  "email": "another@example.com",
+  "fullName": "Test User",
+  "email": "another123@example.com",
   "password": "123456",
-  "birthDate": "2000-07-12"
+  "birthDate": "2001-06-11"
 }
 
 ### Вход пользователя
